@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Client-side Templating Demo</title>
+</head>
+<body>
+
+<template id="profile-template">
+  <div class="profile">
+    <img src="{{avatar_url}}" alt="{{name}} image" width="200">
+    <h1>{{name}}</h1>
+    <p>Blog: {{blog}}</p>
+    <p>Company: {{company}}</p>
+  </div>
+</template>
+
+<template id="repos-template">
+  {{#each repos}}
+    <div class="repo">
+      <h3>{{name}}</h3>
+      <p>Created At: {{relative-date created_at}}</p>
+      <p>Last Updated: {{relative-date updated_at}}</p>
+      {{#if description}}
+        <p>{{description}}</p>
+      {{else}}
+        <p>No description</p>
+      {{/if}}
+
+      {{#if stargazers_count}}
+        Stars: {{stargazers_count}}
+      {{else}}
+        No stars
+      {{/if}}
+    </div>
+  {{/each}}
+</template>
+
+<script src="jquery-3.3.1.js"></script>
+<script src="moment.js"></script>
+<script src="handlebars-v4.0.11.js"></script>
+<script src="main.js"></script>
+
+</body>
+</html>
